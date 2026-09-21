@@ -717,6 +717,21 @@ export const equipmentRelations = relations(equipment, ({ one, many }) => ({
   agreements: many(maintenanceAgreements),
 }));
 
+export const taxRatesRelations = relations(taxRates, ({ many }) => ({
+  groups: many(taxGroupRates),
+}));
+
+export const taxGroupsRelations = relations(taxGroups, ({ many }) => ({
+  rates: many(taxGroupRates),
+  customers: many(customers),
+  jobSites: many(jobSites),
+}));
+
+export const taxGroupRatesRelations = relations(taxGroupRates, ({ one }) => ({
+  taxGroup: one(taxGroups, { fields: [taxGroupRates.taxGroupId], references: [taxGroups.id] }),
+  taxRate: one(taxRates, { fields: [taxGroupRates.taxRateId], references: [taxRates.id] }),
+}));
+
 export const catalogItemsRelations = relations(catalogItems, ({ one, many }) => ({
   tenant: one(tenants, { fields: [catalogItems.tenantId], references: [tenants.id] }),
   priceBookItems: many(priceBookItems),
@@ -909,6 +924,9 @@ export const schema = {
   jobSitesRelations,
   contactsRelations,
   equipmentRelations,
+  taxRatesRelations,
+  taxGroupsRelations,
+  taxGroupRatesRelations,
   catalogItemsRelations,
   quotesRelations,
   quoteLinesRelations,
