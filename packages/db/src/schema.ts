@@ -887,6 +887,7 @@ export type RoleName = (typeof roleNameEnum.enumValues)[number];
 export type WorkOrderStatus = (typeof workOrderStatusEnum.enumValues)[number];
 export type QuoteStatus = (typeof quoteStatusEnum.enumValues)[number];
 export type InvoiceStatus = (typeof invoiceStatusEnum.enumValues)[number];
+export type AgreementInterval = (typeof agreementIntervalEnum.enumValues)[number];
 
 export const schema = {
   tenants,
