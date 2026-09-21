@@ -1,0 +1,23 @@
+{
+  "name": "servicebox",
+  "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "db:generate": "pnpm --filter @servicebox/db generate",
+    "db:migrate": "pnpm --filter @servicebox/db migrate",
+    "db:seed": "pnpm --filter @servicebox/db seed",
+    "db:studio": "pnpm --filter @servicebox/db studio"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.3"
+  }
+}
