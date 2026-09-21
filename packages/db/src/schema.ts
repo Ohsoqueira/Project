@@ -843,6 +843,18 @@ export const paymentAllocationsRelations = relations(paymentAllocations, ({ one 
   invoice: one(invoices, { fields: [paymentAllocations.invoiceId], references: [invoices.id] }),
 }));
 
+export const signaturesRelations = relations(signatures, ({ one }) => ({
+  workOrder: one(workOrders, { fields: [signatures.workOrderId], references: [workOrders.id] }),
+}));
+
+export const attachmentsRelations = relations(attachments, ({ one }) => ({
+  customer: one(customers, { fields: [attachments.customerId], references: [customers.id] }),
+  jobSite: one(jobSites, { fields: [attachments.jobSiteId], references: [jobSites.id] }),
+  equipment: one(equipment, { fields: [attachments.equipmentId], references: [equipment.id] }),
+  workOrder: one(workOrders, { fields: [attachments.workOrderId], references: [workOrders.id] }),
+  quote: one(quotes, { fields: [attachments.quoteId], references: [quotes.id] }),
+}));
+
 export const notesRelations = relations(notes, ({ one }) => ({
   author: one(users, { fields: [notes.authorId], references: [users.id] }),
   customer: one(customers, { fields: [notes.customerId], references: [customers.id] }),
@@ -947,6 +959,8 @@ export const schema = {
   paymentsRelations,
   paymentAllocationsRelations,
   notesRelations,
+  signaturesRelations,
+  attachmentsRelations,
   vendorsRelations,
   purchaseOrdersRelations,
   inventoryLocationsRelations,
