@@ -743,7 +743,7 @@ export const quotesRelations = relations(quotes, ({ one, many }) => ({
   jobSite: one(jobSites, { fields: [quotes.jobSiteId], references: [jobSites.id] }),
   lines: many(quoteLines),
   statusHistory: many(quoteStatusHistory),
-  workOrder: many(workOrders),
+  workOrder: one(workOrders, { fields: [quotes.id], references: [workOrders.quoteId] }),
 }));
 
 export const quoteLinesRelations = relations(quoteLines, ({ one }) => ({
