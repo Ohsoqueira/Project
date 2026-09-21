@@ -766,6 +766,8 @@ export const workOrdersRelations = relations(workOrders, ({ one, many }) => ({
   signatures: many(signatures),
   notes: many(notes),
   attachments: many(attachments),
+  invoices: many(invoices),
+  purchaseOrders: many(purchaseOrders),
 }));
 
 export const workOrderAssigneesRelations = relations(workOrderAssignees, ({ one }) => ({
